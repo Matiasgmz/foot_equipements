@@ -40,9 +40,9 @@ export default function RegisterForm() {
 
     return (
 
-        <div className="container">
+        <div className="container" style={{marginTop: '50px'}}>
             <div className="row justify-content-center">
-                <h1>Inscription</h1>
+                <h1 className='mt-5'>Inscription</h1>
                 <hr className='col-7' />
                 <Form className='col-6' onSubmit={handleSubmit}>
                     <Form.Group className='text-start mt-3' controlId="firstName">

@@ -5,6 +5,7 @@ import React from 'react'
 import { Nav } from 'react-bootstrap';
 import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
+import { Link } from 'react-router-dom';
 
 
 
@@ -16,14 +17,13 @@ export default function Header() {
                 <Container>
                     <Navbar.Brand href="#home">My Rent</Navbar.Brand>
                     <Nav className="me-auto">
-                        <Nav.Link href="#home">Page d'accueil</Nav.Link>
-                        <Nav.Link href="#features">Produits</Nav.Link>
+                        <Link className='text-decoration-none text-light' to='/'>Page d'accueil</Link>
                     </Nav>
                     <Navbar.Collapse className="justify-content-end">
                         <Navbar.Text>
-                        <button className='bg-transparent border-0'><FontAwesomeIcon className='fs-5 me-3' icon={faBasketShopping} /></button>
+                            <Link to='/panier' className='bg-transparent border-0'><FontAwesomeIcon className='fs-5 me-3' icon={faBasketShopping} /></Link>
 
-                            <button className='bg-transparent border-0'><FontAwesomeIcon className='fs-5 p-0 m-0' icon={faUser} /></button>
+                            <Link to='/connexion' className='bg-transparent border-0'><FontAwesomeIcon className='fs-5 p-0 m-0' icon={faUser} /></Link>
                         </Navbar.Text>
                     </Navbar.Collapse>
                 </Container>

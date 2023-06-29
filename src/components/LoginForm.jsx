@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Form, Button } from 'react-bootstrap';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 export default function LoginForm() {
     const [formData, setFormData] = useState({
@@ -18,7 +19,7 @@ export default function LoginForm() {
 
         try {
             const response = await axios.post('http://localhost:3000/api/login', formData);
-            console.log(response.data); 
+            console.log(response.data);
 
             setFormData({
                 mail: '',
@@ -30,11 +31,11 @@ export default function LoginForm() {
     };
 
     return (
-        <div className="container my-5">
+        <div className="container-fluid" style={{ marginTop: '50px' }}>
             <div className="row justify-content-center">
-                <h1>Connexion</h1>
-                <hr className='col-8 mt-2' />
-                <Form className='col-12 col-sm-6' onSubmit={handleSubmit}>
+                <h1 className='mt-5'>Connexion</h1>
+
+                <Form className='col-12 col-sm-4' onSubmit={handleSubmit}>
                     <Form.Group className='text-start mt-3' controlId="email">
                         <Form.Label>Adresse e-mail :</Form.Label>
                         <Form.Control
@@ -56,12 +57,21 @@ export default function LoginForm() {
                         />
                     </Form.Group>
                     <div className='text-end my-2'>
-                    <Button variant="primary" type="submit">
-                        Se connecter
-                    </Button>
+                        <Button variant="primary" type="submit">
+                            Se connecter
+                        </Button>
                     </div>
                 </Form>
             </div>
+
+            <div className="row justify-content-center">
+                <div className="col-8 col-md-4">
+                    <hr />
+                    <p className='fw-bold'>Nouveau client ?</p>
+                    <Link className='btn btn-primary' to="/inscription">Je m'inscris</Link>
+                </div>
+            </div>
+            
         </div>
     );
 }
