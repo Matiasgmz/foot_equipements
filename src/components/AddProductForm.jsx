@@ -23,7 +23,7 @@ export default function AddProductForm() {
         e.preventDefault();
         try {
             const response = await axios.post('http://localhost:3000/api/products', productData);
-            console.log(response.data);
+            console.log(response.data.msg);
             setValidationMessage('Le produit a été ajouté avec succès.');
             setProductData({
                 name: '',

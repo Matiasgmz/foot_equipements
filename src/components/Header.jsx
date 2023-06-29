@@ -19,7 +19,8 @@ export default function Header() {
                     <Nav className="me-auto">
                         <Link className='text-decoration-none text-light me-2' to='/'>Page article |</Link>
                         <Link className='text-decoration-none text-light me-2' to='/ajoutProduit'>Ajouter un article |</Link>
-                        <Link className='text-decoration-none text-light' to='/gestionProduit'>Gerer les articles |</Link>
+                        <Link className='text-decoration-none text-light me-2' to='/gestionProduit'>Gérer les articles |</Link>
+                        <Link className='text-decoration-none text-light' to='/gestionUtilisateur'>Gérer les utilisateurs</Link>
                     </Nav>
                     <Navbar.Collapse className="justify-content-end">
                         <Navbar.Text>
