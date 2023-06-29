@@ -70,7 +70,7 @@ export default function CardProducts() {
                     />
                 </div>
                 {filteredProducts.map((produit, index) => (
-                    <Card key={produit._id} className='col-xxl-2 col-md-3 col-sm-4 me-2 mt-4'>
+                    <Card key={produit._id} className='col-xxl-2 col-xl-3 col-md-4 col-sm-6 col-12 me-2 mt-4'>
                         <Card.Img variant="top" src={produit.photo} style={{ width: '100%', height: '350px', objectFit: 'cover' }} />
 
                         <Card.Body>
@@ -82,7 +82,7 @@ export default function CardProducts() {
                             </ListGroup>
 
                             <div className='d-flex justify-content-between mt-4'>
-                                <div className='fw-bold fs-4 align-self-center'>{produit.price}€/jours</div>
+                                <div className='fw-bold fs-6 align-self-center'>{produit.price}€/jours</div>
                                 <div>
                                     <ButtonGroup className='me-1' aria-label="Basic example">
                                         <Button className='border-secondary' variant="transparent" onClick={() => decrementCount(index)}>-</Button>
