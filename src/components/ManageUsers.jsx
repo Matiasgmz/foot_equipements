@@ -7,19 +7,24 @@ import { faTrash } from '@fortawesome/free-solid-svg-icons';
 export default function ManageUsers() {
     const [users, setUsers] = useState([]);
     const [selectedUsers, setSelectedUsers] = useState([]);
+    const [searchResults, setSearchResults] = useState([]);
+    const [searchTerm, setSearchTerm] = useState('');
 
-    useEffect(() => {
-        fetchUsers();
-    }, []);
+
 
     const fetchUsers = async () => {
         try {
             const response = await axios.get('http://localhost:3000/api/users');
             setUsers(response.data);
+            searchUsers(searchTerm);
         } catch (error) {
             console.error(error);
         }
     };
+
+    useEffect(() => {
+        fetchUsers();
+    }, [searchTerm]);
 
     const deleteUser = async (userId) => {
         try {
@@ -52,10 +57,27 @@ export default function ManageUsers() {
         }
     };
 
+    const searchUsers = (searchTerm) => {
+        const filteredUsers = users.filter((user) =>
+            user.firstname.toLowerCase().includes(searchTerm.toLowerCase())
+        );
+        setSearchResults(filteredUsers);
+    };
+
     return (
         <div className="container" style={{ marginTop: '50px' }}>
             <div className="row justify-content-center">
                 <h1 className="mt-5">Gestion des utilisateurs</h1>
+                <Form.Control
+                    type="text"
+                    placeholder="Rechercher un utilisateur par prénom"
+                    value={searchTerm}
+                    onChange={(e) => {
+                        setSearchTerm(e.target.value);
+                        searchUsers(e.target.value);
+                    }}
+                    className='mt-5'
+                />
                 {users.length === 0 ? (
                     <p>Aucun utilisateur trouvé.</p>
                 ) : (
@@ -81,7 +103,7 @@ export default function ManageUsers() {
                                 </tr>
                             </thead>
                             <tbody>
-                                {users.map((user) => (
+                                {searchResults.map((user) => (
                                     <tr key={user._id}>
                                         <td>
                                             <Form.Check
