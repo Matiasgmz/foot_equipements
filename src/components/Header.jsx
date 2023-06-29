@@ -17,7 +17,8 @@ export default function Header() {
                 <Container>
                     <Navbar.Brand href="#home">My Rent</Navbar.Brand>
                     <Nav className="me-auto">
-                        <Link className='text-decoration-none text-light' to='/'>Page d'accueil</Link>
+                        <Link className='text-decoration-none text-light me-2' to='/'>Page d'accueil</Link>
+                        <Link className='text-decoration-none text-light' to='/ajoutProduit'>Ajouter un produit </Link>
                     </Nav>
                     <Navbar.Collapse className="justify-content-end">
                         <Navbar.Text>
