@@ -37,34 +37,49 @@ export default function Cart() {
 
     const validateCart = async () => {
         try {
-          for (const item of cartItems) {
-            const productId = item.produit._id;
-      
-            const response = await axios.get(`http://localhost:3000/api/products/${productId}`);
-            const productData = response.data;
-      
-      
-            const newQuantity = productData.quantity - item.count;
-      
-    
-            await axios.put(`http://localhost:3000/api/products/${productId}`, { quantity: newQuantity });
-          }
-      
-          setCartItems([]);
-          localStorage.removeItem('cartItems');
-      
-          setValidationMessage(`Panier validé ! Total à payer : ${totalPrice}€`);
+            for (const item of cartItems) {
+                const productId = item.produit._id;
+
+                const response = await axios.get(`http://localhost:3000/api/products/${productId}`);
+                const productData = response.data;
+
+
+                const newQuantity = productData.quantity - item.count;
+
+
+                await axios.put(`http://localhost:3000/api/products/${productId}`, { quantity: newQuantity });
+            }
+
+
+            setValidationMessage(`Panier validé ! Total à payer : ${totalPrice}€`);
+            setCartItems([]);
+
+            localStorage.removeItem('cartItems');
+
         } catch (error) {
-          console.error(error);
+            console.error(error);
         }
-      };
+    };
 
     return (
         <div className="container" style={{ marginTop: '50px' }}>
             <div className="row">
                 <h1 className='mt-5'>Mon Panier</h1>
                 {cartItems.length === 0 ? (
-                    <p>Votre panier est vide.</p>
+                    <>
+
+                        <p>Votre panier est vide. </p>
+
+
+                        {validationMessage && (
+                            <div className='fs-4 fw-bold'>
+                                {validationMessage}
+                            </div>
+                        )}
+
+                    </>
+
+
                 ) : (
                     <>
                         <Table className='mt-5' striped bordered hover>
@@ -103,11 +118,7 @@ export default function Cart() {
                             <p className='fs-4'>Total: {calculateTotalPrice()}€</p>
                             <button className="btn btn-primary mt-3" onClick={validateCart}>Valider le panier</button>
                         </div>
-                        {validationMessage && (
-                            <div className="alert alert-success" role="alert">
-                                {validationMessage}
-                            </div>
-                        )}
+
                     </>
                 )}
             </div>
