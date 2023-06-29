@@ -45,10 +45,12 @@ export default function CardProducts() {
 
 
     return (
-        <div className='container my-5'>
+        <div className='container-fluid my-5'>
             <div className='row justify-content-center'>
+                <h1 className='my-5 '>Produits</h1>
+                <hr className='col-10' />
                 {products.map((produit, index) => (
-                    <Card key={produit._id} className='col-3 me-2 mt-4'>
+                    <Card key={produit._id} className='col-xxl-2 col-md-3 col-sm-4 me-2 mt-4'>
                         <Card.Img variant="top" src={produit.photo} />
                         <Card.Body>
                             <Card.Title className='fw-bold mt-2'>{produit.name}</Card.Title>
@@ -59,9 +61,9 @@ export default function CardProducts() {
                             </ListGroup>
 
                             <div className='d-flex justify-content-between mt-4'>
-                                <div className='fw-bold fs-5 align-self-center'>{produit.price}$</div>
+                                <div className='fw-bold fs-4 align-self-center'>{produit.price}$</div>
                                 <div>
-                                    <ButtonGroup className='me-2' aria-label="Basic example">
+                                    <ButtonGroup className='me-1' aria-label="Basic example">
                                         <Button className='border-secondary' variant="transparent" onClick={() => decrementCount(index)}>-</Button>
                                         <Button className='border-secondary' variant="transparent">{counters[index] || 0}</Button>
                                         <Button className='border-secondary' variant="transparent" onClick={() => incrementCount(index)}>+</Button>

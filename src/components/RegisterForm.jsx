@@ -43,6 +43,7 @@ export default function RegisterForm() {
         <div className="container">
             <div className="row justify-content-center">
                 <h1>Inscription</h1>
+                <hr className='col-7' />
                 <Form className='col-6' onSubmit={handleSubmit}>
                     <Form.Group className='text-start mt-3' controlId="firstName">
                         <Form.Label>Prénom:</Form.Label>
