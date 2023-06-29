@@ -84,7 +84,7 @@ export default function AddProductForm() {
                     </Form.Group>
                     <div className="text-end mt-4">
                         <Button variant="primary" type="submit">
-                            Ajouter le produit
+                            Ajouter l'article
                         </Button>
                     </div>
                 </Form>

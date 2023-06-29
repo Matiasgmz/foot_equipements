@@ -47,11 +47,11 @@ export default function CardProducts() {
     return (
         <div className='container-fluid my-5'>
             <div className='row justify-content-center'>
-                <h1 className='my-5 '>Produits</h1>
+                <h1 className='my-5 '>Articles</h1>
                 <hr className='col-10' />
                 {products.map((produit, index) => (
                     <Card key={produit._id} className='col-xxl-2 col-md-3 col-sm-4 me-2 mt-4'>
-                        <Card.Img variant="top" src={produit.photo} />
+                        <Card.Img variant="top" src={produit.photo}  />
                         <Card.Body>
                             <Card.Title className='fw-bold mt-2'>{produit.name}</Card.Title>
 

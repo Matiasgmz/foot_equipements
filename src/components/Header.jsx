@@ -18,12 +18,12 @@ export default function Header() {
                     <Navbar.Brand href="#home">My Rent</Navbar.Brand>
                     <Nav className="me-auto">
                         <Link className='text-decoration-none text-light me-2' to='/'>Page d'accueil</Link>
-                        <Link className='text-decoration-none text-light' to='/ajoutProduit'>Ajouter un produit </Link>
+                        <Link className='text-decoration-none text-light me-2' to='/ajoutProduit'>Ajouter un article </Link>
+                        <Link className='text-decoration-none text-light' to='/gestionProduit'>Gerer les articles </Link>
                     </Nav>
                     <Navbar.Collapse className="justify-content-end">
                         <Navbar.Text>
                             <Link to='/panier' className='bg-transparent border-0'><FontAwesomeIcon className='fs-5 me-3' icon={faBasketShopping} /></Link>
-
                             <Link to='/connexion' className='bg-transparent border-0'><FontAwesomeIcon className='fs-5 p-0 m-0' icon={faUser} /></Link>
                         </Navbar.Text>
                     </Navbar.Collapse>
