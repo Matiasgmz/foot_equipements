@@ -10,7 +10,16 @@ export default function ManageUsers() {
     const [searchResults, setSearchResults] = useState([]);
     const [searchTerm, setSearchTerm] = useState('');
 
-
+    const searchUsers = (searchTerm) => {
+        if (searchTerm === '') {
+            setSearchResults(users); // Afficher tous les utilisateurs
+        } else {
+            const filteredUsers = users.filter((user) =>
+                user.firstname.toLowerCase().includes(searchTerm.toLowerCase())
+            );
+            setSearchResults(filteredUsers);
+        }
+    };
 
     const fetchUsers = async () => {
         try {
@@ -24,6 +33,10 @@ export default function ManageUsers() {
 
     useEffect(() => {
         fetchUsers();
+    }, []);
+
+    useEffect(() => {
+        searchUsers(searchTerm);
     }, [searchTerm]);
 
     const deleteUser = async (userId) => {
@@ -46,22 +59,13 @@ export default function ManageUsers() {
     const deleteSelectedUsers = async () => {
         try {
             await Promise.all(
-                selectedUsers.map((userId) =>
-                    axios.delete(`http://localhost:3000/api/users/${userId}`)
-                )
+                selectedUsers.map((userId) => axios.delete(`http://localhost:3000/api/users/${userId}`))
             );
             fetchUsers();
             setSelectedUsers([]);
         } catch (error) {
             console.error(error);
         }
-    };
-
-    const searchUsers = (searchTerm) => {
-        const filteredUsers = users.filter((user) =>
-            user.firstname.toLowerCase().includes(searchTerm.toLowerCase())
-        );
-        setSearchResults(filteredUsers);
     };
 
     return (
@@ -74,15 +78,14 @@ export default function ManageUsers() {
                     value={searchTerm}
                     onChange={(e) => {
                         setSearchTerm(e.target.value);
-                        searchUsers(e.target.value);
                     }}
-                    className='mt-5'
+                    className="mt-5"
                 />
                 {users.length === 0 ? (
                     <p>Aucun utilisateur trouvé.</p>
                 ) : (
                     <>
-                        <div className='text-start my-3'>
+                        <div className="text-start my-3">
                             <Button
                                 variant="danger"
                                 onClick={deleteSelectedUsers}
@@ -103,26 +106,49 @@ export default function ManageUsers() {
                                 </tr>
                             </thead>
                             <tbody>
-                                {searchResults.map((user) => (
-                                    <tr key={user._id}>
-                                        <td>
-                                            <Form.Check
-                                                type="checkbox"
-                                                value={user._id}
-                                                onChange={() => handleCheckboxChange(user._id)}
-                                            />
-                                        </td>
-                                        <td className='align-middle'>{user.firstname}</td>
-                                        <td className='align-middle'>{user.lastname}</td>
-                                        <td className='align-middle'>{user.mail}</td>
-                                        <td className='align-middle'>{user.role}</td>
-                                        <td className='align-middle'>
-                                            <Button variant="danger" onClick={() => deleteUser(user._id)}>
-                                                <FontAwesomeIcon icon={faTrash} />
-                                            </Button>
-                                        </td>
-                                    </tr>
-                                ))}
+                                {searchTerm === '' ? (
+                                    users.map((user) => (
+                                        <tr key={user._id}>
+                                            <td>
+                                                <Form.Check
+                                                    type="checkbox"
+                                                    value={user._id}
+                                                    onChange={() => handleCheckboxChange(user._id)}
+                                                />
+                                            </td>
+                                            <td className="align-middle">{user.firstname}</td>
+                                            <td className="align-middle">{user.lastname}</td>
+                                            <td className="align-middle">{user.mail}</td>
+                                            <td className="align-middle">{user.role}</td>
+                                            <td className="align-middle">
+                                                <Button variant="danger" onClick={() => deleteUser(user._id)}>
+                                                    <FontAwesomeIcon icon={faTrash} />
+                                                </Button>
+                                            </td>
+                                        </tr>
+                                    ))
+                                ) : (
+                                    searchResults.map((user) => (
+                                        <tr key={user._id}>
+                                            <td>
+                                                <Form.Check
+                                                    type="checkbox"
+                                                    value={user._id}
+                                                    onChange={() => handleCheckboxChange(user._id)}
+                                                />
+                                            </td>
+                                            <td className="align-middle">{user.firstname}</td>
+                                            <td className="align-middle">{user.lastname}</td>
+                                            <td className="align-middle">{user.mail}</td>
+                                            <td className="align-middle">{user.role}</td>
+                                            <td className="align-middle">
+                                                <Button variant="danger" onClick={() => deleteUser(user._id)}>
+                                                    <FontAwesomeIcon icon={faTrash} />
+                                                </Button>
+                                            </td>
+                                        </tr>
+                                    ))
+                                )}
                             </tbody>
                         </Table>
                     </>
