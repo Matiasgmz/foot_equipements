@@ -4,6 +4,7 @@ import CardProducts from './components/CardProducts';
 import axios from 'axios';
 import Header from './components/Header';
 import RegisterForm from './components/RegisterForm';
+import LoginForm from './components/LoginForm';
 
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
       <Header></Header>
       <CardProducts></CardProducts>
       <RegisterForm></RegisterForm>
+      <LoginForm></LoginForm>
     </div>
   );
 }
