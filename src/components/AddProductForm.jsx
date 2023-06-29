@@ -10,7 +10,8 @@ export default function AddProductForm() {
         name: '',
         weight: '',
         quantity: '',
-        photo: ''
+        photo: '',
+        price: ''
     });
 
     const handleChange = (e) => {
@@ -29,7 +30,8 @@ export default function AddProductForm() {
                 name: '',
                 weight: '',
                 quantity: '',
-                photo: ''
+                photo: '',
+                price: ''
             });
         } catch (error) {
             console.error(error);
@@ -78,6 +80,16 @@ export default function AddProductForm() {
                             type="text"
                             name="photo"
                             value={productData.photo}
+                            onChange={handleChange}
+                            required
+                        />
+                    </Form.Group>
+                    <Form.Group className='text-start mt-3' controlId="price">
+                        <Form.Label>Prix :</Form.Label>
+                        <Form.Control
+                            type="text"
+                            name="price"
+                            value={productData.price}
                             onChange={handleChange}
                             required
                         />

@@ -96,8 +96,8 @@ export default function Cart() {
                             <tbody>
                                 {cartItems.map((item, index) => (
                                     <tr key={index}>
-                                        <td>{item.produit.name}</td>
-                                        <td>{item.produit.price}</td>
+                                        <td className='align-middle'>{item.produit.name}</td>
+                                        <td className='align-middle'>{item.produit.price}</td>
                                         <td>
                                             <input
                                                 type="number"
@@ -107,7 +107,7 @@ export default function Cart() {
                                                 onChange={(e) => updateCartItem(index, parseInt(e.target.value))}
                                             />
                                         </td>
-                                        <td>{item.produit.price * item.count}</td>
+                                        <td className='align-middle'>{item.produit.price * item.count}</td>
                                         <td>
                                             <button className="btn btn-danger" onClick={() => deleteCartItem(index)}>Supprimer</button>
                                         </td>
@@ -116,7 +116,7 @@ export default function Cart() {
                             </tbody>
                         </Table>
                         <div className='text-start col-2'>
-                            <p>Nombre de jours :</p>
+                            <p className='fw-bold'>Nombre de jours :</p>
                             <input
                                 type="number"
                                 className="form-control"
