@@ -27,11 +27,28 @@ export default function CardProducts() {
         }
     };
 
+    const [counters, setCounters] = useState([]); // Tableau d'états locaux pour les compteurs
+
+    const incrementCount = (index) => {
+        const updatedCounters = [...counters];
+        updatedCounters[index] = (updatedCounters[index] || 0) + 1; // Incrémenter le compteur correspondant à l'index
+        setCounters(updatedCounters);
+    };
+
+    const decrementCount = (index) => {
+        if (counters[index] > 0) {
+            const updatedCounters = [...counters];
+            updatedCounters[index] = updatedCounters[index] - 1; // Décrémenter le compteur correspondant à l'index si la valeur est supérieure à 0
+            setCounters(updatedCounters);
+        }
+    };
+
+
     return (
-        <div className='container mt-5'>
+        <div className='container my-5'>
             <div className='row justify-content-center'>
-                {products.map((produit) => (
-                    <Card key={produit._id} className='col-3 me-2'>
+                {products.map((produit, index) => (
+                    <Card key={produit._id} className='col-3 me-2 mt-4'>
                         <Card.Img variant="top" src={produit.photo} />
                         <Card.Body>
                             <Card.Title className='fw-bold mt-2'>{produit.name}</Card.Title>
@@ -45,9 +62,9 @@ export default function CardProducts() {
                                 <div className='fw-bold fs-5 align-self-center'>{produit.price}$</div>
                                 <div>
                                     <ButtonGroup className='me-2' aria-label="Basic example">
-                                        <Button className='border-secondary' variant="transparent">-</Button>
-                                        <Button className='border-secondary' variant="transparent">1</Button>
-                                        <Button className='border-secondary' variant="transparent">+</Button>
+                                        <Button className='border-secondary' variant="transparent" onClick={() => decrementCount(index)}>-</Button>
+                                        <Button className='border-secondary' variant="transparent">{counters[index] || 0}</Button>
+                                        <Button className='border-secondary' variant="transparent" onClick={() => incrementCount(index)}>+</Button>
                                     </ButtonGroup>
                                     <Button className='text-end' variant="primary"><FontAwesomeIcon icon={faCartPlus} /></Button>
                                 </div>

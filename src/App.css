@@ -7,4 +7,9 @@
 body {
   background-image: repeating-linear-gradient(90deg, rgba(3,3,3, 0.06) 0px, rgba(3,3,3, 0.06) 1px,transparent 1px, transparent 21px,rgba(3,3,3, 0.06) 21px, rgba(3,3,3, 0.06) 22px,transparent 22px, transparent 72px),repeating-linear-gradient(0deg, rgba(3,3,3, 0.06) 0px, rgba(3,3,3, 0.06) 1px,transparent 1px, transparent 21px,rgba(3,3,3, 0.06) 21px, rgba(3,3,3, 0.06) 22px,transparent 22px, transparent 72px),repeating-linear-gradient(135deg, rgba(3,3,3, 0.06) 0px, rgba(3,3,3, 0.06) 1px,transparent 1px, transparent 21px,rgba(3,3,3, 0.06) 21px, rgba(3,3,3, 0.06) 22px,transparent 22px, transparent 72px),linear-gradient(90deg, hsl(275,3%,97%),hsl(275,3%,97%));
   font-family: 'Quicksand', sans-serif;
+  overflow-x: hidden;
+    
+  background-repeat: no-repeat;
+  background-size:cover;
+  background-attachment: fixed;
 }

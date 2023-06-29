@@ -12,7 +12,7 @@ import Navbar from 'react-bootstrap/Navbar';
 export default function Header() {
     return (
         <div>
-            <Navbar bg="dark" data-bs-theme="dark">
+            <Navbar bg="dark" className='fixed-top' data-bs-theme="dark">
                 <Container>
                     <Navbar.Brand href="#home">My Rent</Navbar.Brand>
                     <Nav className="me-auto">
