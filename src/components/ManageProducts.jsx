@@ -95,7 +95,7 @@ export default function ManageProducts() {
                                     <td className='align-middle'>{product.name}</td>
                                     <td className='align-middle'>{product.weight}</td>
                                     <td className='align-middle'>{product.quantity}</td>
-                                    <td>
+                                    <td className='align-middle'>
                                         <Button variant="primary" className='me-2' onClick={() => openModal(product)}>
                                             <FontAwesomeIcon icon={faPenToSquare} />
                                         </Button>
@@ -114,7 +114,7 @@ export default function ManageProducts() {
                     </Modal.Header>
                     <Modal.Body>
                         <Form>
-                            <Form.Group controlId="formName">
+                            <Form.Group className='mt-3' controlId="formName">
                                 <Form.Label>Nom</Form.Label>
                                 <Form.Control
                                     type="text"
@@ -123,7 +123,7 @@ export default function ManageProducts() {
                                     onChange={handleInputChange}
                                 />
                             </Form.Group>
-                            <Form.Group controlId="formWeight">
+                            <Form.Group className='mt-3' controlId="formWeight">
                                 <Form.Label>Poids</Form.Label>
                                 <Form.Control
                                     type="text"
@@ -132,7 +132,7 @@ export default function ManageProducts() {
                                     onChange={handleInputChange}
                                 />
                             </Form.Group>
-                            <Form.Group controlId="formQuantity">
+                            <Form.Group className='mt-3' controlId="formQuantity">
                                 <Form.Label>Quantité</Form.Label>
                                 <Form.Control
                                     type="text"
@@ -141,7 +141,7 @@ export default function ManageProducts() {
                                     onChange={handleInputChange}
                                 />
                             </Form.Group>
-                            <Form.Group controlId="formPhoto">
+                            <Form.Group className='mt-3' controlId="formPhoto">
                                 <Form.Label>Photo</Form.Label>
                                 <Form.Control
                                     type="text"

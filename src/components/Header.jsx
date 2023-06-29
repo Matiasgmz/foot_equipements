@@ -15,11 +15,11 @@ export default function Header() {
         <div>
             <Navbar bg="dark" className='fixed-top' data-bs-theme="dark">
                 <Container>
-                    <Navbar.Brand href="#home">My Rent</Navbar.Brand>
+                    <Navbar.Brand> <Link className='text-decoration-none text-light fw-bold' to="/">My Rent</Link> </Navbar.Brand>
                     <Nav className="me-auto">
-                        <Link className='text-decoration-none text-light me-2' to='/'>Page d'accueil</Link>
-                        <Link className='text-decoration-none text-light me-2' to='/ajoutProduit'>Ajouter un article </Link>
-                        <Link className='text-decoration-none text-light' to='/gestionProduit'>Gerer les articles </Link>
+                        <Link className='text-decoration-none text-light me-2' to='/'>Page article |</Link>
+                        <Link className='text-decoration-none text-light me-2' to='/ajoutProduit'>Ajouter un article |</Link>
+                        <Link className='text-decoration-none text-light' to='/gestionProduit'>Gerer les articles |</Link>
                     </Nav>
                     <Navbar.Collapse className="justify-content-end">
                         <Navbar.Text>

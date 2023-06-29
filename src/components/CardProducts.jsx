@@ -51,7 +51,8 @@ export default function CardProducts() {
                 <hr className='col-10' />
                 {products.map((produit, index) => (
                     <Card key={produit._id} className='col-xxl-2 col-md-3 col-sm-4 me-2 mt-4'>
-                        <Card.Img variant="top" src={produit.photo}  />
+                        <Card.Img variant="top" src={produit.photo} style={{width: '100%', height: '350px', objectFit: 'cover'}} />
+                        
                         <Card.Body>
                             <Card.Title className='fw-bold mt-2'>{produit.name}</Card.Title>
 
