@@ -8,6 +8,7 @@ import RegisterForm from './components/RegisterForm';
 import AddProductForm from './components/AddProductForm';
 import ManageProducts from './components/ManageProducts';
 import ManageUsers from './components/ManageUsers';
+import Cart from './components/Cart';
 
 
 
@@ -23,6 +24,7 @@ function App() {
           <Route path="/ajoutProduit" element={<AddProductForm />} />
           <Route path="/gestionProduit" element={<ManageProducts />} />
           <Route path="/gestionUtilisateur" element={<ManageUsers/>} />
+          <Route path="/panier" element={<Cart/>} />
         </Routes>
       </Router>
     </div>

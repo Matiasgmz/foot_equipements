@@ -27,20 +27,27 @@ export default function CardProducts() {
         }
     };
 
-    const [counters, setCounters] = useState([]); // Tableau d'états locaux pour les compteurs
+    const [counters, setCounters] = useState([]);
 
     const incrementCount = (index) => {
         const updatedCounters = [...counters];
-        updatedCounters[index] = (updatedCounters[index] || 0) + 1; // Incrémenter le compteur correspondant à l'index
+        updatedCounters[index] = (updatedCounters[index] || 0) + 1; 
         setCounters(updatedCounters);
     };
 
     const decrementCount = (index) => {
         if (counters[index] > 0) {
             const updatedCounters = [...counters];
-            updatedCounters[index] = updatedCounters[index] - 1; // Décrémenter le compteur correspondant à l'index si la valeur est supérieure à 0
+            updatedCounters[index] = updatedCounters[index] - 1; 
             setCounters(updatedCounters);
         }
+    };
+
+    const addToCart = (produit, index) => {
+        const cartItems = JSON.parse(localStorage.getItem('cartItems')) || []; 
+        const newItem = { produit, count: counters[index] || 0 };
+        cartItems.push(newItem); 
+        localStorage.setItem('cartItems', JSON.stringify(cartItems)); 
     };
 
 
@@ -69,7 +76,7 @@ export default function CardProducts() {
                                         <Button className='border-secondary' variant="transparent">{counters[index] || 0}</Button>
                                         <Button className='border-secondary' variant="transparent" onClick={() => incrementCount(index)}>+</Button>
                                     </ButtonGroup>
-                                    <Button className='text-end' variant="primary"><FontAwesomeIcon icon={faCartPlus} /></Button>
+                                    <Button className='text-end' variant="primary" onClick={() => addToCart(produit, index)}><FontAwesomeIcon icon={faCartPlus} /></Button>
                                 </div>
                             </div>
                         </Card.Body>

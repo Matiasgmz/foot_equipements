@@ -9,7 +9,8 @@ export default function RegisterForm() {
         lastname: '',
         mail: '',
         phone: '',
-        password: ''
+        password: '',
+        role: 1
     });
 
     const handleChange = (e) => {
@@ -22,7 +23,7 @@ export default function RegisterForm() {
         e.preventDefault();
 
         try {
-            const response = await axios.post('http://localhost:3000/api/vers_inscription', formData);
+            const response = await axios.post('http://localhost:3000/api/users', formData);
             console.log(response.data);
 
 
@@ -49,7 +50,7 @@ export default function RegisterForm() {
                         <Form.Label>Prénom:</Form.Label>
                         <Form.Control
                             type="text"
-                            name="firstName"
+                            name="firstname"
                             value={formData.firstname}
                             onChange={handleChange}
                             required
@@ -59,7 +60,7 @@ export default function RegisterForm() {
                         <Form.Label>Nom:</Form.Label>
                         <Form.Control
                             type="text"
-                            name="lastName"
+                            name="lastname"
                             value={formData.lastname}
                             onChange={handleChange}
                             required
@@ -69,7 +70,7 @@ export default function RegisterForm() {
                         <Form.Label>E-mail:</Form.Label>
                         <Form.Control
                             type="email"
-                            name="email"
+                            name="mail"
                             value={formData.mail}
                             onChange={handleChange}
                             required
