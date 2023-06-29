@@ -100,7 +100,7 @@ export default function Cart() {
                             </tbody>
                         </Table>
                         <div className='text-end'>
-                            <p className='fs-4'>Total: {calculateTotalPrice()}$</p>
+                            <p className='fs-4'>Total: {calculateTotalPrice()}€</p>
                             <button className="btn btn-primary mt-3" onClick={validateCart}>Valider le panier</button>
                         </div>
                         {validationMessage && (

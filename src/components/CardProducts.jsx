@@ -69,7 +69,7 @@ export default function CardProducts() {
                             </ListGroup>
 
                             <div className='d-flex justify-content-between mt-4'>
-                                <div className='fw-bold fs-4 align-self-center'>{produit.price}$</div>
+                                <div className='fw-bold fs-4 align-self-center'>{produit.price}€</div>
                                 <div>
                                     <ButtonGroup className='me-1' aria-label="Basic example">
                                         <Button className='border-secondary' variant="transparent" onClick={() => decrementCount(index)}>-</Button>
