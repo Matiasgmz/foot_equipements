@@ -4,6 +4,7 @@ import { Table } from 'react-bootstrap';
 
 export default function Cart() {
     const [cartItems, setCartItems] = useState([]);
+    const [numberOfDays, setNumberOfDays] = useState(1);
 
 
     useEffect(() => {
@@ -14,10 +15,10 @@ export default function Cart() {
     const updateCartItem = (index, count) => {
         const updatedItems = [...cartItems];
         updatedItems[index].count = count;
+        updatedItems[index].totalPrice = updatedItems[index].produit.price * count * numberOfDays; // Mise à jour du prix total en fonction du nombre de jours
         setCartItems(updatedItems);
         localStorage.setItem('cartItems', JSON.stringify(updatedItems));
     };
-
     const deleteCartItem = (index) => {
         const updatedItems = [...cartItems];
         updatedItems.splice(index, 1);
@@ -28,7 +29,7 @@ export default function Cart() {
     const calculateTotalPrice = () => {
         let totalPrice = 0;
         cartItems.forEach((item) => {
-            totalPrice += item.produit.price * item.count;
+            totalPrice += item.produit.price * item.count * numberOfDays; // Utilisation du nombre de jours pour le calcul du prix total
         });
         return totalPrice;
     };
@@ -114,6 +115,16 @@ export default function Cart() {
                                 ))}
                             </tbody>
                         </Table>
+                        <div className='text-start col-2'>
+                            <p>Nombre de jours :</p>
+                            <input
+                                type="number"
+                                className="form-control"
+                                min="1"
+                                value={numberOfDays}
+                                onChange={(e) => setNumberOfDays(parseInt(e.target.value))}
+                            />
+                        </div>
                         <div className='text-end'>
                             <p className='fs-4'>Total: {calculateTotalPrice()}€</p>
                             <button className="btn btn-primary mt-3" onClick={validateCart}>Valider le panier</button>

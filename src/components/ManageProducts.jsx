@@ -97,7 +97,7 @@ export default function ManageProducts() {
                                     <td className='align-middle'>{product.name}</td>
                                     <td className='align-middle'>{product.weight}</td>
                                     <td className='align-middle'>{product.quantity}</td>
-                                    <td className='align-middle'>{product.price}</td>
+                                    <td className='align-middle'>{product.price}/Jours</td>
                                     <td className='align-middle'>
                                         <Button variant="primary" className='me-2' onClick={() => openModal(product)}>
                                             <FontAwesomeIcon icon={faPenToSquare} />

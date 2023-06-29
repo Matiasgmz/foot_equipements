@@ -82,15 +82,17 @@ export default function CardProducts() {
                             </ListGroup>
 
                             <div className='d-flex justify-content-between mt-4'>
-                                <div className='fw-bold fs-4 align-self-center'>{produit.price}€</div>
+                                <div className='fw-bold fs-4 align-self-center'>{produit.price}€/jours</div>
                                 <div>
                                     <ButtonGroup className='me-1' aria-label="Basic example">
                                         <Button className='border-secondary' variant="transparent" onClick={() => decrementCount(index)}>-</Button>
                                         <Button className='border-secondary' variant="transparent">{counters[index] || 0}</Button>
                                         <Button className='border-secondary' variant="transparent" onClick={() => incrementCount(index)}>+</Button>
                                     </ButtonGroup>
-                                    <Button className='text-end' variant="primary" onClick={() => addToCart(produit, index)}><FontAwesomeIcon icon={faCartPlus} /></Button>
                                 </div>
+                            </div>
+                            <div className='mt-3'>
+                                <Button className='text-end' variant="primary" onClick={() => addToCart(produit, index)}><FontAwesomeIcon icon={faCartPlus} /></Button>
                             </div>
                         </Card.Body>
                     </Card>
