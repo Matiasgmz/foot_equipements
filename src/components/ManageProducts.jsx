@@ -13,6 +13,7 @@ export default function ManageProducts() {
         name: '',
         weight: '',
         quantity: '',
+        price: '',
         photo: ''
     });
 
@@ -44,6 +45,7 @@ export default function ManageProducts() {
             name: product.name,
             weight: product.weight,
             quantity: product.quantity,
+            price: product.price,
             photo: product.photo
         });
         setShowModal(true);
@@ -67,7 +69,6 @@ export default function ManageProducts() {
         }
     };
 
-
     return (
         <div className="container" style={{ marginTop: '50px' }}>
             <div className="row justify-content-center">
@@ -85,6 +86,7 @@ export default function ManageProducts() {
                                 <th>Nom</th>
                                 <th>Poids</th>
                                 <th>Quantité</th>
+                                <th>Prix</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
@@ -95,6 +97,7 @@ export default function ManageProducts() {
                                     <td className='align-middle'>{product.name}</td>
                                     <td className='align-middle'>{product.weight}</td>
                                     <td className='align-middle'>{product.quantity}</td>
+                                    <td className='align-middle'>{product.price}/Jours</td>
                                     <td className='align-middle'>
                                         <Button variant="primary" className='me-2' onClick={() => openModal(product)}>
                                             <FontAwesomeIcon icon={faPenToSquare} />
@@ -138,6 +141,15 @@ export default function ManageProducts() {
                                     type="text"
                                     name="quantity"
                                     value={editedProduct.quantity}
+                                    onChange={handleInputChange}
+                                />
+                            </Form.Group>
+                            <Form.Group className='mt-3' controlId="formPrice">
+                                <Form.Label>Prix</Form.Label>
+                                <Form.Control
+                                    type="text"
+                                    name="price"
+                                    value={editedProduct.price}
                                     onChange={handleInputChange}
                                 />
                             </Form.Group>

@@ -10,6 +10,7 @@ export default function LoginForm() {
     password: ''
   });
   const [loading, setLoading] = useState(false);
+  const [showWindow, setShowWindow] = useState(false);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -18,6 +19,7 @@ export default function LoginForm() {
   useEffect(() => {
     if (loading) {
       // Perform actions while loading is true (e.g., show a loading indicator)
+      setShowWindow(false); // Hide the window while loading
       console.log('Loading in progress...');
     }
   }, [loading]);
@@ -39,23 +41,34 @@ export default function LoginForm() {
         mail: '',
         password: ''
       });
-  
+
       // Simulate a delay of 1.5 seconds before navigating to the home page
       setTimeout(() => {
         setLoading(false); // Set loading state to false
+        setShowWindow(true); // Show the window after loading is complete
         navigate('/');
+        setTimeout(() => {
+          window.location.reload(); // Reload the page
+        }, 500);
       }, 1500);
     } catch (error) {
       console.error(error);
       setLoading(false); // Set loading state to false
     }
   };
-  
 
   return (
     <div className="container-fluid" style={{ marginTop: '50px' }}>
       <div className="row justify-content-center">
         <h1 className="mt-5">Connexion</h1>
+
+        {showWindow && (
+          <div className="col-12 col-sm-4">
+            <div className="alert alert-success" role="alert">
+              Connexion établie avec succès !
+            </div>
+          </div>
+        )}
 
         <Form className="col-12 col-sm-4" onSubmit={handleSubmit}>
           <Form.Group className="text-start mt-3" controlId="email">
